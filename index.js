@@ -6,6 +6,7 @@ import cookieParser from "cookie-parser";
 import bcrypt from "bcrypt";
 // import jwt from jsonwebtoken;
 import connectDB from "./src/db/index.js";
+import userRoutes from "./src/routes/users.routes.js"
 
 
 const app = express();
@@ -19,3 +20,16 @@ app.use(cookieParser());
 app.get('/' , (req , res) => {
     res.send("Hello World");
 });
+
+app.use("api/v1" , userRoutes)
+
+
+connectDB()
+  .then(() => {
+    app.listen(process.env.PORT, () => {
+      console.log(`⚙️  Server is running at port : ${process.env.PORT}`);
+    });
+  })
+  .catch((err) => {
+    console.log("MONGO DB connection failed !!! ", err);
+  });
