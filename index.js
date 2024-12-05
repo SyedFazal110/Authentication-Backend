@@ -3,8 +3,6 @@ dotenv.config();
 import express from "express";
 import cookieParser from "cookie-parser";
 import cors from "cors";
-import bcrypt from "bcrypt";
-import jwt from "jsonwebtoken";
 import connectDB from "./src/db/index.js";
 import userRoutes from "./src/routes/users.routes.js";
 
